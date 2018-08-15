@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7eb4a73d7df48f69ca9ef4bcab8f357" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_GAME.Game_BD" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GAME.Morte_BD" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_GAME.Player_BD" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="BD_GAME.FK_TB_MORTE_TB_GAME" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GAME.FK_TB_PLAYER_TB_GAME" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_GAME.FK_TB_MORTE_TB_PLAYER" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

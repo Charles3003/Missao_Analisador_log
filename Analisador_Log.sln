@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analisador_Log", "Analisador_Log_Listar\Analisador_Log.csproj", "{4B1B3C9C-6DEE-4820-89A9-44EDEC5237CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analisador_Log_Negocio", "Analisador_Log_Negocio\Analisador_Log_Negocio.csproj", "{8CE2A62A-B5BF-41BF-B2E0-35904037EBE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analisador_Unit", "Analisador_Unit\Analisador_Unit.csproj", "{036B9FD5-5D66-4F39-A9B9-7403D84146B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B1B3C9C-6DEE-4820-89A9-44EDEC5237CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B1B3C9C-6DEE-4820-89A9-44EDEC5237CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B1B3C9C-6DEE-4820-89A9-44EDEC5237CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B1B3C9C-6DEE-4820-89A9-44EDEC5237CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE2A62A-B5BF-41BF-B2E0-35904037EBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE2A62A-B5BF-41BF-B2E0-35904037EBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE2A62A-B5BF-41BF-B2E0-35904037EBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE2A62A-B5BF-41BF-B2E0-35904037EBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{036B9FD5-5D66-4F39-A9B9-7403D84146B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036B9FD5-5D66-4F39-A9B9-7403D84146B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036B9FD5-5D66-4F39-A9B9-7403D84146B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036B9FD5-5D66-4F39-A9B9-7403D84146B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A5D1CA5-3FBD-4420-889D-585147308958}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://projeto21sistemas.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Analisador_Log_Listar\\Analisador_Log.csproj
+		SccProjectName1 = Analisador_Log_Listar
+		SccLocalPath1 = Analisador_Log_Listar
+		SccProjectUniqueName2 = Analisador_Log_Negocio\\Analisador_Log_Negocio.csproj
+		SccProjectName2 = Analisador_Log_Negocio
+		SccLocalPath2 = Analisador_Log_Negocio
+		SccProjectUniqueName3 = Analisador_Unit\\Analisador_Unit.csproj
+		SccProjectName3 = Analisador_Unit
+		SccLocalPath3 = Analisador_Unit
+	EndGlobalSection
+EndGlobal

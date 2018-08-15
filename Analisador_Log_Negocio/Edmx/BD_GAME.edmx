@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_GAME.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_GAME">
+          <Key>
+            <PropertyRef Name="CD_GAME" />
+          </Key>
+          <Property Name="CD_GAME" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NM_GAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TOTAL_MORTE" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_MORTE">
+          <Key>
+            <PropertyRef Name="CD_MORTE" />
+          </Key>
+          <Property Name="CD_MORTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CD_PLAYER" Type="int" Nullable="false" />
+          <Property Name="CD_GAME" Type="int" Nullable="false" />
+          <Property Name="NM_MORTE" Type="varchar" MaxLength="50" />
+          <Property Name="DANO" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_PLAYER">
+          <Key>
+            <PropertyRef Name="CD_PLAYER" />
+          </Key>
+          <Property Name="CD_PLAYER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CD_GAME" Type="int" Nullable="false" />
+          <Property Name="NM_PLAYER" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TB_MORTE_TB_GAME">
+          <End Role="TB_GAME" Type="Self.TB_GAME" Multiplicity="1" />
+          <End Role="TB_MORTE" Type="Self.TB_MORTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_GAME">
+              <PropertyRef Name="CD_GAME" />
+            </Principal>
+            <Dependent Role="TB_MORTE">
+              <PropertyRef Name="CD_GAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_MORTE_TB_PLAYER">
+          <End Role="TB_PLAYER" Type="Self.TB_PLAYER" Multiplicity="1" />
+          <End Role="TB_MORTE" Type="Self.TB_MORTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PLAYER">
+              <PropertyRef Name="CD_PLAYER" />
+            </Principal>
+            <Dependent Role="TB_MORTE">
+              <PropertyRef Name="CD_PLAYER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_PLAYER_TB_GAME">
+          <End Role="TB_GAME" Type="Self.TB_GAME" Multiplicity="1" />
+          <End Role="TB_PLAYER" Type="Self.TB_PLAYER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_GAME">
+              <PropertyRef Name="CD_GAME" />
+            </Principal>
+            <Dependent Role="TB_PLAYER">
+              <PropertyRef Name="CD_GAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_GAMEStoreContainer">
+          <EntitySet Name="TB_GAME" EntityType="Self.TB_GAME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_MORTE" EntityType="Self.TB_MORTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PLAYER" EntityType="Self.TB_PLAYER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TB_MORTE_TB_GAME" Association="Self.FK_TB_MORTE_TB_GAME">
+            <End Role="TB_GAME" EntitySet="TB_GAME" />
+            <End Role="TB_MORTE" EntitySet="TB_MORTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_MORTE_TB_PLAYER" Association="Self.FK_TB_MORTE_TB_PLAYER">
+            <End Role="TB_PLAYER" EntitySet="TB_PLAYER" />
+            <End Role="TB_MORTE" EntitySet="TB_MORTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_PLAYER_TB_GAME" Association="Self.FK_TB_PLAYER_TB_GAME">
+            <End Role="TB_GAME" EntitySet="TB_GAME" />
+            <End Role="TB_PLAYER" EntitySet="TB_PLAYER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_GAME" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Game_BD">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome_Game" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total_Morte" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="TB_MORTE" Relationship="Self.FK_TB_MORTE_TB_GAME" FromRole="TB_GAME" ToRole="TB_MORTE" />
+          <NavigationProperty Name="TB_PLAYER" Relationship="Self.FK_TB_PLAYER_TB_GAME" FromRole="TB_GAME" ToRole="TB_PLAYER" />
+        </EntityType>
+        <EntityType Name="Morte_BD">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Player" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Game" Type="Int32" Nullable="false" />
+          <Property Name="Nome_Morte" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dano" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="TB_GAME" Relationship="Self.FK_TB_MORTE_TB_GAME" FromRole="TB_MORTE" ToRole="TB_GAME" />
+          <NavigationProperty Name="TB_PLAYER" Relationship="Self.FK_TB_MORTE_TB_PLAYER" FromRole="TB_MORTE" ToRole="TB_PLAYER" />
+        </EntityType>
+        <EntityType Name="Player_BD">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Game" Type="Int32" Nullable="false" />
+          <Property Name="Nome_Player" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_GAME" Relationship="Self.FK_TB_PLAYER_TB_GAME" FromRole="TB_PLAYER" ToRole="TB_GAME" />
+          <NavigationProperty Name="TB_MORTE" Relationship="Self.FK_TB_MORTE_TB_PLAYER" FromRole="TB_PLAYER" ToRole="TB_MORTE" />
+        </EntityType>
+        <Association Name="FK_TB_MORTE_TB_GAME">
+          <End Role="TB_GAME" Type="BD_GAME.Game_BD" Multiplicity="1" />
+          <End Role="TB_MORTE" Type="BD_GAME.Morte_BD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_GAME">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="TB_MORTE">
+              <PropertyRef Name="Codigo_Game" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_PLAYER_TB_GAME">
+          <End Role="TB_GAME" Type="BD_GAME.Game_BD" Multiplicity="1" />
+          <End Role="TB_PLAYER" Type="BD_GAME.Player_BD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_GAME">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="TB_PLAYER">
+              <PropertyRef Name="Codigo_Game" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_MORTE_TB_PLAYER">
+          <End Role="TB_PLAYER" Type="BD_GAME.Player_BD" Multiplicity="1" />
+          <End Role="TB_MORTE" Type="BD_GAME.Morte_BD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PLAYER">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="TB_MORTE">
+              <PropertyRef Name="Codigo_Player" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_GAMEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Game_BD" EntityType="BD_GAME.Game_BD" />
+          <EntitySet Name="Morte_BD" EntityType="BD_GAME.Morte_BD" />
+          <EntitySet Name="Player_BD" EntityType="BD_GAME.Player_BD" />
+          <AssociationSet Name="FK_TB_MORTE_TB_GAME" Association="Self.FK_TB_MORTE_TB_GAME">
+            <End Role="TB_GAME" EntitySet="Game_BD" />
+            <End Role="TB_MORTE" EntitySet="Morte_BD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_PLAYER_TB_GAME" Association="Self.FK_TB_PLAYER_TB_GAME">
+            <End Role="TB_GAME" EntitySet="Game_BD" />
+            <End Role="TB_PLAYER" EntitySet="Player_BD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_MORTE_TB_PLAYER" Association="Self.FK_TB_MORTE_TB_PLAYER">
+            <End Role="TB_PLAYER" EntitySet="Player_BD" />
+            <End Role="TB_MORTE" EntitySet="Morte_BD" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_GAMEStoreContainer" CdmEntityContainer="BD_GAMEEntities">
+          <EntitySetMapping Name="Game_BD">
+            <EntityTypeMapping TypeName="BD_GAME.Game_BD">
+              <MappingFragment StoreEntitySet="TB_GAME">
+                <ScalarProperty Name="Codigo" ColumnName="CD_GAME" />
+                <ScalarProperty Name="Nome_Game" ColumnName="NM_GAME" />
+                <ScalarProperty Name="Total_Morte" ColumnName="TOTAL_MORTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Morte_BD">
+            <EntityTypeMapping TypeName="BD_GAME.Morte_BD">
+              <MappingFragment StoreEntitySet="TB_MORTE">
+                <ScalarProperty Name="Codigo" ColumnName="CD_MORTE" />
+                <ScalarProperty Name="Codigo_Player" ColumnName="CD_PLAYER" />
+                <ScalarProperty Name="Codigo_Game" ColumnName="CD_GAME" />
+                <ScalarProperty Name="Nome_Morte" ColumnName="NM_MORTE" />
+                <ScalarProperty Name="Dano" ColumnName="DANO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player_BD">
+            <EntityTypeMapping TypeName="BD_GAME.Player_BD">
+              <MappingFragment StoreEntitySet="TB_PLAYER">
+                <ScalarProperty Name="Codigo" ColumnName="CD_PLAYER" />
+                <ScalarProperty Name="Codigo_Game" ColumnName="CD_GAME" />
+                <ScalarProperty Name="Nome_Player" ColumnName="NM_PLAYER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
